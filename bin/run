@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
 
 require "bundler/setup"
 require "benchmark"
@@ -16,10 +15,10 @@ day = ARGV.fetch(0)
 problem = ARGV.fetch(1)
 
 solution = Object.const_get("Advent2022::Day#{day}").new
-input = File.open("lib/advent2022/day#{day}/input")
-$stdin = input
 bm = Benchmark.measure do
+  input = File.open("lib/advent2022/day#{day}/input")
+  $stdin = input
   solution.send("problem#{problem}")
 end
 
-$stderr.puts bm
+warn bm

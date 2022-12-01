@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Advent2022::Day01
   def elves_total
     elves = [0]
