@@ -1,7 +1,7 @@
 module Advent2022
   module Day01
     class << self
-      def problem1
+      def elves_total
         elves = [0]
 
         STDIN.each do |line|
@@ -12,7 +12,15 @@ module Advent2022
           end
         end
 
-        puts elves.max
+        elves
+      end
+
+      def problem1
+        puts elves_total.max
+      end
+
+      def problem2
+        puts elves_total.sort.last(3).inject(&:+)
       end
     end
   end
