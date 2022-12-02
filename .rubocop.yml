@@ -21,3 +21,5 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Naming/MethodParameterName:
+  Enabled: false
