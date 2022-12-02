@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "advent2022/version"
-Dir.glob(File.join("advent2022", "day*", "day*.rb"), base: "lib").each do |r|
+Dir.glob(File.join("advent2022","day*.rb"), base: "lib").each do |r|
   require_relative r
 end
 

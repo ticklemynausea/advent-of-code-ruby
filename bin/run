@@ -16,7 +16,7 @@ problem = ARGV.fetch(1)
 
 solution = Object.const_get("Advent2022::Day#{day}").new
 bm = Benchmark.measure do
-  input = File.open("lib/advent2022/day#{day}/input")
+  input = File.open("lib/advent2022/day#{day}.txt")
   $stdin = input
   solution.send("problem#{problem}")
 end
