@@ -1,4 +1,14 @@
 class Advent2022::Day01
+  def problem1
+    puts elves_total.max
+  end
+
+  def problem2
+    puts elves_total.sort.last(3).inject(&:+)
+  end
+
+  private
+
   def elves_total
     elves = [0]
 
@@ -11,13 +21,5 @@ class Advent2022::Day01
     end
 
     elves
-  end
-
-  def problem1
-    puts elves_total.max
-  end
-
-  def problem2
-    puts elves_total.sort.last(3).inject(&:+)
   end
 end

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 require_relative "advent2022/version"
-require_relative "advent2022/day01/day01"
-require_relative "advent2022/day02/day02"
+Dir.glob(File.join("advent2022", "day*", "day*.rb"), base: "lib").each do |r|
+  require_relative r
+end
 
 module Advent2022
   class Error < StandardError; end
