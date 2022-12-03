@@ -5,7 +5,7 @@ class Advent2022::Day02
       shape_score(me) + play_score(op, me)
     end
 
-    puts totals.inject(&:+)
+    totals.inject(&:+)
   end
 
   def problem2
@@ -15,7 +15,7 @@ class Advent2022::Day02
       shape_score(me) + play_score(op, me)
     end
 
-    puts totals.inject(&:+)
+    totals.inject(&:+)
   end
 
   private

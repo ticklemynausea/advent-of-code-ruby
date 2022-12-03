@@ -1,10 +1,10 @@
 class Advent2022::Day01
   def problem1
-    puts elves_total.max
+    elves_total.max
   end
 
   def problem2
-    puts elves_total.sort.last(3).inject(&:+)
+    elves_total.sort.last(3).inject(&:+)
   end
 
   private

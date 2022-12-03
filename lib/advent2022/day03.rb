@@ -7,7 +7,7 @@ class Advent2022::Day03
       priority(common)
     end
 
-    puts priorities.inject(&:+)
+    priorities.inject(&:+)
   end
 
   def problem2
@@ -16,7 +16,7 @@ class Advent2022::Day03
       priority(badge)
     end
 
-    puts priorities.inject(&:+)
+    priorities.inject(&:+)
   end
 
   private
