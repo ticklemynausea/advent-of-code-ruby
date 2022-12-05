@@ -50,4 +50,3 @@ class Advent2022::Day05
 
   attr_reader :stacks
 end
-
