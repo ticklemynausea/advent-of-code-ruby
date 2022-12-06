@@ -1,5 +1,3 @@
-require "pry"
-
 class Advent2022::Day04
   def problem1
     ranges.map do |first_range, second_range|
