@@ -1,8 +1,8 @@
 class Advent2022::Day03
   def problem1
     priorities = $stdin.map(&:chomp).map do |line|
-      first =  line[..line.length/2-1]
-      second =  line[line.length/2..]
+      first = line[..line.length / 2 - 1]
+      second = line[line.length / 2..]
       common = first.chars.intersection(second.chars).first
       priority(common)
     end
@@ -22,7 +22,8 @@ class Advent2022::Day03
   private
 
   def priority(item)
-    return item.ord - 96 if ('a'..'z') === item
-    item.ord - 38 if ('A'..'Z') === item
+    return item.ord - 96 if ("a".."z") === item
+
+    item.ord - 38 if ("A".."Z") === item
   end
 end
