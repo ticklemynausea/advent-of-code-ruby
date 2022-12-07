@@ -7,8 +7,6 @@ class Advent2022::Day01
     elves_total.sort.last(3).inject(&:+)
   end
 
-  private
-
   def elves_total
     elves = [0]
 
