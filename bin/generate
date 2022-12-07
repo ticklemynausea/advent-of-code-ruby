@@ -1,0 +1,76 @@
+#!/usr/bin/env ruby
+
+PROBLEM_TEMPLATE = <<~PROBLEM_TEMPLATE
+  class Advent2022::Day{XXX}
+    def problem1
+    end
+
+    def problem2
+    end
+  end
+PROBLEM_TEMPLATE
+
+SPEC_TEMPLATE = <<~SPEC_TEMPLATE
+  require "spec_helper"
+
+  RSpec.describe Advent2022::Day{XXX} do
+    subject { described_class.new }
+
+    describe "example" do
+      let(:input) do
+        <<~INPUT
+        INPUT
+      end
+
+      it "does something with the example input" do
+        expect(nil).to eq(nil)
+      end
+    end
+
+    describe "problem 1" do
+      it "is correct" do
+        expect(subject.problem1).to eq(nil)
+      end
+    end
+
+    describe "problem 2" do
+      it "is correct" do
+        expect(subject.problem2).to eq(nil)
+      end
+    end
+  end
+SPEC_TEMPLATE
+
+def create_file(filename, template, year, day)
+  raise "file exists: #{filename}" if File.exist?(filename)
+
+  File.open(filename, "w") do |f|
+    f.write(template.gsub("{XXX}", day))
+  end
+end
+
+def generate_problem(year, day)
+  filename = "lib/advent#{year}/day#{day}.rb"
+  create_file(filename, PROBLEM_TEMPLATE, year, day)
+end
+
+def generate_spec(year, day)
+  filename = "spec/advent#{year}/day#{day}_spec.rb"
+  create_file(filename, SPEC_TEMPLATE, year, day)
+end
+
+def generate_input(year, day)
+  filename = "lib/advent#{year}/inputs/day#{day}.txt"
+  create_file(filename, "", year, day)
+end
+
+if ARGV.fetch(0) == "problem"
+  generate_problem("2022", ARGV.fetch(1))
+  generate_input("2022", ARGV.fetch(1))
+elsif ARGV.fetch(0) == "spec"
+  generate_spec("2022", ARGV.fetch(1))
+else
+  generate_problem("2022", ARGV.fetch(0))
+  generate_spec("2022", ARGV.fetch(0))
+  generate_input("2022", ARGV.fetch(0))
+end
