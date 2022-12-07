@@ -20,8 +20,6 @@ class Advent2022::Day07
     find_all_dirs(filesystem, min: target).min { |a,b| a.zize <=> b.zize }.zize
   end
 
-  private
-
   def filesystem
     @filesystem ||= begin
       root_node = nil

@@ -14,11 +14,10 @@ require "advent2022"
 day = ARGV.fetch(0)
 problem = ARGV.fetch(1)
 
-solution = Object.const_get("Advent2022::Day#{day}").new
+klass = Object.const_get("Advent2022::Day#{day}")
 bm = Benchmark.measure do
-  input = File.open("lib/advent2022/inputs/day#{day}.txt")
-  $stdin = input
-  puts solution.send("problem#{problem}")
+  $stdin = Advent2022.input_file_for(klass)
+  puts klass.new.send("problem#{problem}")
 end
 
 warn bm
