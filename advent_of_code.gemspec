@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/advent2022/version"
+require_relative "lib/advent_of_code/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "advent2022"
-  spec.version = Advent2022::VERSION
+  spec.name = "advent_of_code"
+  spec.version = AdventOfCode::VERSION
   spec.authors = ["Mário Carneiro"]
   spec.email = ["mcarneiro@salsify.com"]
 

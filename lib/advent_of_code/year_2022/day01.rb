@@ -1,4 +1,4 @@
-class Advent2022::Day01
+class AdventOfCode::Year2022::Day01
   def problem1
     elves_total.max
   end

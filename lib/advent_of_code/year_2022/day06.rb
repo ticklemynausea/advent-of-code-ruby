@@ -1,4 +1,4 @@
-class Advent2022::Day06
+class AdventOfCode::Year2022::Day06
   def problem1
     unique_sequence_at(4)
   end

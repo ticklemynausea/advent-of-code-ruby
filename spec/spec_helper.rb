@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "advent2022"
+require "advent_of_code"
 
 require "tempfile"
 
@@ -16,7 +16,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    next unless described_class.to_s.match?(/^Advent2022::Day\d{2}/)
+    next unless described_class.to_s.match?(/^AdventOfCode::Year\d{4}::Day\d{2}/)
 
     if respond_to?(:input)
       $stdin = Tempfile.new
@@ -26,7 +26,7 @@ RSpec.configure do |config|
       next
     end
 
-    $stdin = Advent2022.input_file_for(described_class)
+    $stdin = AdventOfCode.input_file_for(described_class)
   end
 
   config.after(:each) do; end

@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 PROBLEM_TEMPLATE = <<~PROBLEM_TEMPLATE
-  class Advent2022::Day{XXX}
+  class AdventOfCode::Year2022::Day{XXX}
     def problem1
     end
 
@@ -13,7 +13,7 @@ PROBLEM_TEMPLATE
 SPEC_TEMPLATE = <<~SPEC_TEMPLATE
   require "spec_helper"
 
-  RSpec.describe Advent2022::Day{XXX} do
+  RSpec.describe AdventOfCode::Year2022::Day{XXX} do
     subject { described_class.new }
 
     describe "example" do

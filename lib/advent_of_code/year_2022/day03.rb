@@ -1,4 +1,4 @@
-class Advent2022::Day03
+class AdventOfCode::Year2022::Day03
   def problem1
     priorities = $stdin.map(&:chomp).map do |line|
       first = line[..line.length / 2 - 1]

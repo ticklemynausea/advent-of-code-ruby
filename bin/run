@@ -2,7 +2,7 @@
 
 require "bundler/setup"
 require "benchmark"
-require "advent2022"
+require "advent_of_code"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
@@ -11,12 +11,13 @@ require "advent2022"
 # require "pry"
 # Pry.start
 
-day = ARGV.fetch(0)
-problem = ARGV.fetch(1)
+year = ARGV.fetch(0)
+day = ARGV.fetch(1)
+problem = ARGV.fetch(2)
 
-klass = Object.const_get("Advent2022::Day#{day}")
+klass = Object.const_get("AdventOfCode::Year#{year}::Day#{day}")
 bm = Benchmark.measure do
-  $stdin = Advent2022.input_file_for(klass)
+  $stdin = AdventOfCode.input_file_for(klass)
   puts klass.new.send("problem#{problem}")
 end
 

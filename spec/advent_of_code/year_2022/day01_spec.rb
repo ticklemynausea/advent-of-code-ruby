@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe Advent2022::Day01 do
+RSpec.describe AdventOfCode::Year2022::Day01 do
   subject { described_class.new }
 
   describe "example" do

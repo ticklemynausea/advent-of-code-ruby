@@ -1,4 +1,4 @@
-class Advent2022::Day07
+class AdventOfCode::Year2022::Day07
   Node = Struct.new(:name, :zize, :children, keyword_init: true) do
     def dir?
       !children.nil?

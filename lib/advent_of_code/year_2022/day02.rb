@@ -1,4 +1,4 @@
-class Advent2022::Day02
+class AdventOfCode::Year2022::Day02
   def problem1
     totals = $stdin.map do |line|
       op, me = line.split

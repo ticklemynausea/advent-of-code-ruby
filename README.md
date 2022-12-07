@@ -1,6 +1,6 @@
-# Advent2022
+# AdventOfCode
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/advent2022`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/advent_of_code`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
 
@@ -8,11 +8,11 @@ TODO: Delete this and the text above, and describe your gem
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add advent2022
+    $ bundle add advent_of_code
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install advent2022
+    $ gem install advent_of_code
 
 ## Usage
 
@@ -26,7 +26,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/advent2022.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/advent_of_code.
 
 ## License
 

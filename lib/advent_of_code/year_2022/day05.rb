@@ -1,4 +1,4 @@
-class Advent2022::Day05
+class AdventOfCode::Year2022::Day05
   def problem1
     load_problem
 
