@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require "fileutils"
+
 PROBLEM_TEMPLATE = <<~PROBLEM_TEMPLATE
   class AdventOfCode::Year2022::Day{XXX}
     def problem1
@@ -42,35 +44,67 @@ SPEC_TEMPLATE = <<~SPEC_TEMPLATE
 SPEC_TEMPLATE
 
 def create_file(filename, template, year, day)
-  raise "file exists: #{filename}" if File.exist?(filename)
+  if File.exist?(filename)
+    warn "file exists: #{filename}"
+    return
+  end
 
   File.open(filename, "w") do |f|
     f.write(template.gsub("{XXX}", day))
   end
 end
 
+def ensure_dir(year, day)
+  [
+    "lib/advent_of_code/year_#{year}/",
+    "lib/advent_of_code/year_#{year}/inputs/",
+    "spec/advent_of_code/year_#{year}/",
+  ].each do |dir|
+    if File.directory?(dir)
+      warn "dir exists: #{dir}"
+      next
+    end
+
+    FileUtils.mkdir_p(dir)
+  end
+end
+
 def generate_problem(year, day)
-  filename = "lib/advent#{year}/day#{day}.rb"
+  filename = "lib/advent_of_code/year_#{year}/day#{day}.rb"
   create_file(filename, PROBLEM_TEMPLATE, year, day)
 end
 
 def generate_spec(year, day)
-  filename = "spec/advent#{year}/day#{day}_spec.rb"
+  filename = "spec/advent_of_code/year_#{year}/day#{day}_spec.rb"
   create_file(filename, SPEC_TEMPLATE, year, day)
 end
 
 def generate_input(year, day)
-  filename = "lib/advent#{year}/inputs/day#{day}.txt"
+  filename = "lib/advent_of_code/year_#{year}/inputs/day#{day}.txt"
   create_file(filename, "", year, day)
 end
 
-if ARGV.fetch(0) == "problem"
-  generate_problem("2022", ARGV.fetch(1))
-  generate_input("2022", ARGV.fetch(1))
-elsif ARGV.fetch(0) == "spec"
-  generate_spec("2022", ARGV.fetch(1))
+command, year, day =
+  if ARGV.count == 3
+    [ARGV.fetch(0), ARGV.fetch(1), ARGV.fetch(2)]
+  elsif ARGV.count == 2
+    [nil, ARGV.fetch(0), ARGV.fetch(1)]
+  elsif ARGV.count == 1
+    [nil, Time.now.year.to_s, ARGV.fetch(0)]
+  else
+    raise ArgumentError
+  end
+
+
+ensure_dir(year, day)
+
+if command == "problem"
+  generate_problem(year, day)
+  generate_input(year, day)
+elsif command == "spec"
+  generate_spec(year, day)
 else
-  generate_problem("2022", ARGV.fetch(0))
-  generate_spec("2022", ARGV.fetch(0))
-  generate_input("2022", ARGV.fetch(0))
+  generate_problem(year, day)
+  generate_spec(year, day)
+  generate_input(year, day)
 end
