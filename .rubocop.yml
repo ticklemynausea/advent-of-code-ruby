@@ -12,6 +12,9 @@ Style/StringLiteralsInInterpolation:
 Layout/LineLength:
   Max: 120
 
+Layout/MultiLineMethodCallIndentation:
+  EnforcedStyle: indented
+
 Style/ClassAndModuleChildren:
   Enabled: false
 
