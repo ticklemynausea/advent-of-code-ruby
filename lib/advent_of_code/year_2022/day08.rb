@@ -35,15 +35,14 @@ class AdventOfCode::Year2022::Day08
   end
 
   def scenic_score(i, j)
-    distance_to_left_and_right(grid[i], j) * \
-      distance_to_left_and_right(grid.transpose[j], i)
+    distance_to_left(grid[i], j) * \
+      distance_to_left(grid[i].reverse, side - j) * \
+      distance_to_left(grid.transpose[j], i) * \
+      distance_to_left(grid.transpose[j].reverse, side - i)
   end
 
-  def distance_to_left_and_right(sequence, place)
-    to_left = sequence[..place].reverse
-    to_right = sequence[place..]
-
-    count_until_larger_than_first(to_left) * count_until_larger_than_first(to_right)
+  def distance_to_left(sequence, place)
+    count_until_larger_than_first(sequence[..place].reverse)
   end
 
   def count_until_larger_than_first(sequence)
