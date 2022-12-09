@@ -2,6 +2,11 @@
 
 require "fileutils"
 
+MODULE_TEMPLATE = <<~MODULE_TEMPLATE.freeze
+  module AdventOfCode::Year{YEAR}
+  end
+MODULE_TEMPLATE
+
 PROBLEM_TEMPLATE = <<~PROBLEM_TEMPLATE.freeze
   class AdventOfCode::Year{YEAR}::Day{DAY}
     def problem1
@@ -37,7 +42,7 @@ SPEC_TEMPLATE = <<~SPEC_TEMPLATE.freeze
   end
 SPEC_TEMPLATE
 
-def create_file(filename, template, year, day)
+def create_file(filename, template, year, day = "")
   if File.exist?(filename)
     warn "file exists: #{filename}"
     return
@@ -46,7 +51,7 @@ def create_file(filename, template, year, day)
   File.write(filename, template.gsub("{YEAR}", year).gsub("{DAY}", day))
 end
 
-def ensure_dir(year, _day)
+def ensure_dir(year)
   [
     "lib/advent_of_code/year_#{year}/",
     "lib/advent_of_code/year_#{year}/inputs/",
@@ -59,6 +64,11 @@ def ensure_dir(year, _day)
 
     FileUtils.mkdir_p(dir)
   end
+end
+
+def generate_module(year)
+  filename = "lib/advent_of_code/year_#{year}.rb"
+  create_file(filename, MODULE_TEMPLATE, year)
 end
 
 def generate_problem(year, day)
@@ -88,15 +98,17 @@ command, year, day =
     raise ArgumentError
   end
 
-ensure_dir(year, day)
+ensure_dir(year)
 
 case command
 when "problem"
+  generate_module(year, day)
   generate_problem(year, day)
   generate_input(year, day)
 when "spec"
   generate_spec(year, day)
 else
+  generate_module(year)
   generate_problem(year, day)
   generate_spec(year, day)
   generate_input(year, day)
