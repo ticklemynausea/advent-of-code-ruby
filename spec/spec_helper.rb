@@ -31,3 +31,24 @@ RSpec.configure do |config|
 
   config.after(:each) do; end
 end
+
+RSpec.shared_examples_for "daily problem" do
+  let(:problem1_solution) { nil }
+  let(:problem2_solution) { nil }
+
+  describe "part 1" do
+    it "is correct" do
+      skip if problem1_solution.nil?
+
+      expect(subject.problem1).to eq(problem1_solution)
+    end
+  end
+
+  describe "part 2" do
+    it "is correct" do
+      skip if problem2_solution.nil?
+
+      expect(subject.problem2).to eq(problem2_solution)
+    end
+  end
+end

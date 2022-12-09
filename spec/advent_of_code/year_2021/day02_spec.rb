@@ -15,24 +15,14 @@ RSpec.describe AdventOfCode::Year2021::Day02 do
       INPUT
     end
 
-    it "problem 1 solves example" do
-      expect(subject.problem1).to eq(150)
-    end
-
-    it "problem 2 solves example" do
-      expect(subject.problem2).to eq(900)
+    it_behaves_like "daily problem" do
+      let(:problem1_solution) { 150 }
+      let(:problem2_solution) { 900 }
     end
   end
 
-  describe "problem 1" do
-    it "is correct" do
-      expect(subject.problem1).to eq(1636725)
-    end
-  end
-
-  describe "problem 2" do
-    it "is correct" do
-      expect(subject.problem2).to eq(1872757425)
-    end
+  it_behaves_like "daily problem" do
+    let(:problem1_solution) { 1_636_725 }
+    let(:problem2_solution) { 1_872_757_425 }
   end
 end

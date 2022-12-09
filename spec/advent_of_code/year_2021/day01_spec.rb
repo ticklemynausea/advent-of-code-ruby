@@ -19,20 +19,14 @@ RSpec.describe AdventOfCode::Year2021::Day01 do
       INPUT
     end
 
-    it "does something with the example input" do
-      expect(subject.problem1).to eq(7)
+    it_behaves_like "daily problem" do
+      let(:problem1_solution) { 7 }
+      let(:problem2_solution) { 5 }
     end
   end
 
-  describe "problem 1" do
-    it "is correct" do
-      expect(subject.problem1).to eq(1709)
-    end
-  end
-
-  describe "problem 2" do
-    it "is correct" do
-      expect(subject.problem2).to eq(1761)
-    end
+  it_behaves_like "daily problem" do
+    let(:problem1_solution) { 1709 }
+    let(:problem2_solution) { 1761 }
   end
 end

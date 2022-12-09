@@ -32,20 +32,18 @@ RSpec.describe AdventOfCode::Year2022::Day07 do
       INPUT
     end
 
+    it_behaves_like "daily problem" do
+      let(:problem1_solution) { 95_437 }
+      let(:problem2_solution) { 24_933_642 }
+    end
+
     it "calculates size" do
       expect(subject.filesystem.zize).to eq(48_381_165)
     end
   end
 
-  describe "problem 1" do
-    it "is correct" do
-      expect(subject.problem1).to eq(1_086_293)
-    end
-  end
-
-  describe "problem 2" do
-    it "is correct" do
-      expect(subject.problem2).to eq(366_028)
-    end
+  it_behaves_like "daily problem" do
+    let(:problem1_solution) { 1_086_293 }
+    let(:problem2_solution) { 366_028 }
   end
 end

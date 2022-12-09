@@ -14,25 +14,15 @@ RSpec.describe AdventOfCode::Year2022::Day08 do
       INPUT
     end
 
-    it "does something with the example input" do
-      expect(subject.problem1).to eq(21)
-    end
-
-    it "does something with the example input" do
-      expect(subject.problem2).to eq(8)
+    it_behaves_like "daily problem" do
+      let(:problem1_solution) { 21 }
+      let(:problem2_solution) { 8 }
     end
   end
 
-  describe "problem 1" do
-    it "is correct" do
-      expect(subject.problem1).to eq(1809)
-    end
-  end
-
-  describe "problem 2" do
-    it "is correct" do
-      expect(subject.problem2).to eq(479400)
-    end
+  it_behaves_like "daily problem" do
+    let(:problem1_solution) { 1809 }
+    let(:problem2_solution) { 479400 }
   end
 
   describe ".visible_indexes" do

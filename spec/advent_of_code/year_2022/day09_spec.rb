@@ -17,16 +17,9 @@ RSpec.describe AdventOfCode::Year2022::Day09 do
       INPUT
     end
 
-    describe "problem 1" do
-      it "is correct" do
-        expect(subject.problem1).to eq(13)
-      end
-    end
-
-    describe "problem 2" do
-      it "is correct" do
-        expect(subject.problem2).to eq(1)
-      end
+    it_behaves_like "daily problem" do
+      let(:problem1_solution) { 13 }
+      let(:problem2_solution) { 1 }
     end
   end
 
@@ -44,22 +37,14 @@ RSpec.describe AdventOfCode::Year2022::Day09 do
       INPUT
     end
 
-    describe "problem 2" do
-      it "is correct" do
-        expect(subject.problem2).to eq(36)
-      end
+    it_behaves_like "daily problem" do
+      let(:problem2_solution) { 36 }
     end
   end
 
-  describe "problem 1" do
-    it "is correct" do
-      expect(subject.problem1).to eq(6498)
-    end
-  end
 
-  describe "problem 2" do
-    it "is correct" do
-      expect(subject.problem2).to eq(2531)
-    end
+  it_behaves_like "daily problem" do
+    let(:problem1_solution) { 6498 }
+    let(:problem2_solution) { 2531 }
   end
 end

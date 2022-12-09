@@ -23,20 +23,18 @@ RSpec.describe AdventOfCode::Year2022::Day01 do
       INPUT
     end
 
+    it_behaves_like "daily problem" do
+      let(:problem1_solution) { 24000 }
+      let(:problem2_solution) { 45000 }
+    end
+
     it "calculates elves' total" do
       expect(subject.elves_total.max).to eq(24000)
     end
   end
 
-  describe "problem 1" do
-    it "is correct" do
-      expect(subject.problem1).to eq(68442)
-    end
-  end
-
-  describe "problem 2" do
-    it "is correct" do
-      expect(subject.problem2).to eq(204837)
-    end
+  it_behaves_like "daily problem" do
+    let(:problem1_solution) { 68442 }
+    let(:problem2_solution) { 204837 }
   end
 end
