@@ -33,7 +33,7 @@ class AdventOfCode::Year2022::Day09
       d_x = h_x - t_x
       d_y = h_y - t_y
 
-      if (d_x.abs == 1 && d_y.abs == 2) || (d_x.abs == 2 && d_y.abs == 1 || (d_x.abs == 2 && d_y.abs == 2))
+      if (d_x.abs == 1 && d_y.abs == 2) || ((d_x.abs == 2 && d_y.abs == 1) || (d_x.abs == 2 && d_y.abs == 2))
         self.t_x += d_x <=> 0
         self.t_y += d_y <=> 0
       elsif d_x.abs == 2
@@ -53,13 +53,13 @@ class AdventOfCode::Year2022::Day09
       iter_y.map do |y|
         iter_x.map do |x|
           if y == h_y && x == h_x
-            'H'
+            "H"
           elsif y == t_y && x == t_x
-            'T'
-          elsif y == 0 && x == 0
-            's'
+            "T"
+          elsif y.zero? && x.zero?
+            "s"
           else
-            '.'
+            "."
           end
         end
       end
@@ -104,7 +104,7 @@ class AdventOfCode::Year2022::Day09
 
   def problem2
     tail_visited = Set.new
-    rope =  10.times.map { Rope.new }
+    rope = 10.times.map { Rope.new }
 
     each_command do |direction, n|
       n.times do

@@ -42,7 +42,6 @@ RSpec.describe AdventOfCode::Year2022::Day09 do
     end
   end
 
-
   it_behaves_like "daily problem" do
     let(:problem1_solution) { 6498 }
     let(:problem2_solution) { 2531 }

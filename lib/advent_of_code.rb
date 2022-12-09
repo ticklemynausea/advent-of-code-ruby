@@ -1,6 +1,6 @@
 require "pry"
 
-Dir.glob(File.join("advent_of_code","**","*.rb"), base: "lib").sort.each do |r|
+Dir.glob(File.join("advent_of_code", "**", "*.rb"), base: "lib").sort.each do |r|
   require_relative r
 end
 

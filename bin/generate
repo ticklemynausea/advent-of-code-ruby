@@ -2,7 +2,7 @@
 
 require "fileutils"
 
-PROBLEM_TEMPLATE = <<~PROBLEM_TEMPLATE
+PROBLEM_TEMPLATE = <<~PROBLEM_TEMPLATE.freeze
   class AdventOfCode::Year2022::Day{XXX}
     def problem1
     end
@@ -12,7 +12,7 @@ PROBLEM_TEMPLATE = <<~PROBLEM_TEMPLATE
   end
 PROBLEM_TEMPLATE
 
-SPEC_TEMPLATE = <<~SPEC_TEMPLATE
+SPEC_TEMPLATE = <<~SPEC_TEMPLATE.freeze
   require "spec_helper"
 
   RSpec.describe AdventOfCode::Year2022::Day{XXX} do
@@ -43,22 +43,20 @@ SPEC_TEMPLATE = <<~SPEC_TEMPLATE
   end
 SPEC_TEMPLATE
 
-def create_file(filename, template, year, day)
+def create_file(filename, template, _year, day)
   if File.exist?(filename)
     warn "file exists: #{filename}"
     return
   end
 
-  File.open(filename, "w") do |f|
-    f.write(template.gsub("{XXX}", day))
-  end
+  File.write(filename, template.gsub("{XXX}", day))
 end
 
-def ensure_dir(year, day)
+def ensure_dir(year, _day)
   [
     "lib/advent_of_code/year_#{year}/",
     "lib/advent_of_code/year_#{year}/inputs/",
-    "spec/advent_of_code/year_#{year}/",
+    "spec/advent_of_code/year_#{year}/"
   ].each do |dir|
     if File.directory?(dir)
       warn "dir exists: #{dir}"
@@ -85,23 +83,24 @@ def generate_input(year, day)
 end
 
 command, year, day =
-  if ARGV.count == 3
+  case ARGV.count
+  when 3
     [ARGV.fetch(0), ARGV.fetch(1), ARGV.fetch(2)]
-  elsif ARGV.count == 2
+  when 2
     [nil, ARGV.fetch(0), ARGV.fetch(1)]
-  elsif ARGV.count == 1
+  when 1
     [nil, Time.now.year.to_s, ARGV.fetch(0)]
   else
     raise ArgumentError
   end
 
-
 ensure_dir(year, day)
 
-if command == "problem"
+case command
+when "problem"
   generate_problem(year, day)
   generate_input(year, day)
-elsif command == "spec"
+when "spec"
   generate_spec(year, day)
 else
   generate_problem(year, day)

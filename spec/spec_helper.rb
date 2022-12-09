@@ -29,7 +29,7 @@ RSpec.configure do |config|
     $stdin = AdventOfCode.input_file_for(described_class)
   end
 
-  config.after(:each) do; end
+  # config.after(:each) { ; }
 end
 
 RSpec.shared_examples_for "daily problem" do

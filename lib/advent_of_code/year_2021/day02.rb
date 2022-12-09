@@ -24,7 +24,7 @@ class AdventOfCode::Year2021::Day02
 
       case command
       when "forward"
-        next [aim, position + units, depth + aim * units]
+        next [aim, position + units, depth + (aim * units)]
       when "down"
         next [aim + units, position, depth]
       when "up"

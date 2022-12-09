@@ -1,4 +1,5 @@
 AllCops:
+  NewCops: enable
   TargetRubyVersion: 3.1.2
 
 Style/StringLiterals:
@@ -12,7 +13,7 @@ Style/StringLiteralsInInterpolation:
 Layout/LineLength:
   Max: 120
 
-Layout/MultiLineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Style/ClassAndModuleChildren:
@@ -22,6 +23,9 @@ Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/MultilineBlockChain:
   Enabled: false
 
 Style/CaseEquality:
@@ -39,8 +43,17 @@ Metrics/PerceivedComplexity:
 Metrics/MethodLength:
   Enabled: false
 
+Metrics/BlockLength:
+  Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
 
+Metrics/ParameterLists:
+  Enabled: false
+
 Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: false
+
+Gemspec/RequiredRubyVersion:
   Enabled: false

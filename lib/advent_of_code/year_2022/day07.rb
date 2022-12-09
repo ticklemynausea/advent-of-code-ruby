@@ -17,7 +17,7 @@ class AdventOfCode::Year2022::Day07
 
   def problem2
     target = 30_000_000 - (70_000_000 - filesystem.zize)
-    find_all_dirs(filesystem, min: target).min { |a,b| a.zize <=> b.zize }.zize
+    find_all_dirs(filesystem, min: target).min { |a, b| a.zize <=> b.zize }.zize
   end
 
   def filesystem
@@ -29,10 +29,11 @@ class AdventOfCode::Year2022::Day07
         tokens = line.split
 
         if tokens[0] == "$" && tokens[1] == "cd"
-          if tokens[2] == "/"
+          case tokens[2]
+          when "/"
             root_node = Node.new(name: "/", children: [])
             stack.push(root_node)
-          elsif tokens[2] == ".."
+          when ".."
             stack.pop
           else
             to = stack.last.children.find { |d| d.name == tokens[2] && d.zize.nil? }
@@ -65,6 +66,6 @@ class AdventOfCode::Year2022::Day07
       .append(*root
         .children
         .filter(&:dir?)
-        .flat_map { |d| find_all_dirs(d, min: min, max: max) }))
+        .flat_map { |d| find_all_dirs(d, min:, max:) }))
   end
 end

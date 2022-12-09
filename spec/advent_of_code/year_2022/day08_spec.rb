@@ -22,15 +22,15 @@ RSpec.describe AdventOfCode::Year2022::Day08 do
 
   it_behaves_like "daily problem" do
     let(:problem1_solution) { 1809 }
-    let(:problem2_solution) { 479400 }
+    let(:problem2_solution) { 479_400 }
   end
 
   describe ".visible_indexes" do
     it "is correct" do
-      expect(subject.visible_indexes([9,1,2,3,4,5])).to eq([0])
-      expect(subject.visible_indexes([6,5,4,3,2,1])).to eq([0])
-      expect(subject.visible_indexes([1,2,3,4,5,9])).to eq([0,1,2,3,4,5])
-      expect(subject.visible_indexes([1,2,1,3,1,4])).to eq([0,1,3,5])
+      expect(subject.visible_indexes([9, 1, 2, 3, 4, 5])).to eq([0])
+      expect(subject.visible_indexes([6, 5, 4, 3, 2, 1])).to eq([0])
+      expect(subject.visible_indexes([1, 2, 3, 4, 5, 9])).to eq([0, 1, 2, 3, 4, 5])
+      expect(subject.visible_indexes([1, 2, 1, 3, 1, 4])).to eq([0, 1, 3, 5])
     end
   end
 

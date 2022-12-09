@@ -1,7 +1,7 @@
 class AdventOfCode::Year2022::Day03
   def problem1
     priorities = $stdin.map(&:chomp).map do |line|
-      first = line[..line.length / 2 - 1]
+      first = line[..(line.length / 2) - 1]
       second = line[line.length / 2..]
       common = first.chars.intersection(second.chars).first
       priority(common)

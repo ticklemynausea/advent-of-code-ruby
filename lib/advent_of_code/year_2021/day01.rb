@@ -10,6 +10,7 @@ class AdventOfCode::Year2021::Day01
   def count_consecutive(list)
     list.each_cons(2).reduce(0) do |acum, (first, second)|
       next acum + 1 if second > first
+
       acum
     end
   end
