@@ -6,7 +6,7 @@ class AdventOfCode::Year2022::Day09
       super
     end
 
-    def move_head(direction)
+    def move(direction)
       case direction
       when "U"
         self.h_y += 1
@@ -17,6 +17,12 @@ class AdventOfCode::Year2022::Day09
       when "R"
         self.h_x += 1
       end
+
+      update_tail
+    end
+
+    def head_at
+      [h_x, h_y]
     end
 
     def tail_at
@@ -27,7 +33,7 @@ class AdventOfCode::Year2022::Day09
       d_x = h_x - t_x
       d_y = h_y - t_y
 
-      if (d_x.abs == 1 && d_y.abs == 2) || (d_x.abs == 2 && d_y.abs == 1)
+      if (d_x.abs == 1 && d_y.abs == 2) || (d_x.abs == 2 && d_y.abs == 1 || (d_x.abs == 2 && d_y.abs == 2))
         self.t_x += d_x <=> 0
         self.t_y += d_y <=> 0
       elsif d_x.abs == 2
@@ -67,6 +73,13 @@ class AdventOfCode::Year2022::Day09
         puts
       end
     end
+
+    def head_from_tail(rope)
+      self.h_x = rope.t_x
+      self.h_y = rope.t_y
+
+      update_tail
+    end
   end
 
   def problem1
@@ -75,11 +88,10 @@ class AdventOfCode::Year2022::Day09
 
     each_command do |direction, n|
       n.times do
-        rope.move_head(direction)
+        rope.move(direction)
 
         # rope.puts_repr
         # puts
-        rope.update_tail
         # rope.puts_repr
         # puts
         # puts
@@ -91,6 +103,22 @@ class AdventOfCode::Year2022::Day09
   end
 
   def problem2
+    tail_visited = Set.new
+    rope =  10.times.map { Rope.new }
+
+    each_command do |direction, n|
+      n.times do
+        rope.first.move(direction)
+
+        rope.each_cons(2) do |ahead, behind|
+          behind.head_from_tail(ahead)
+        end
+
+        tail_visited << rope.last.head_at
+      end
+    end
+
+    tail_visited.size
   end
 
   def each_command
