@@ -3,7 +3,7 @@
 require "fileutils"
 
 PROBLEM_TEMPLATE = <<~PROBLEM_TEMPLATE.freeze
-  class AdventOfCode::Year2022::Day{XXX}
+  class AdventOfCode::Year{YEAR}::Day{DAY}
     def problem1
     end
 
@@ -15,7 +15,7 @@ PROBLEM_TEMPLATE
 SPEC_TEMPLATE = <<~SPEC_TEMPLATE.freeze
   require "spec_helper"
 
-  RSpec.describe AdventOfCode::Year2022::Day{XXX} do
+  RSpec.describe AdventOfCode::Year{YEAR}::Day{DAY} do
     subject { described_class.new }
 
     describe "example" do
@@ -24,32 +24,26 @@ SPEC_TEMPLATE = <<~SPEC_TEMPLATE.freeze
         INPUT
       end
 
-      it "does something with the example input" do
-        expect(nil).to eq(nil)
+      it_behaves_like "daily problem" do
+        let(:problem1_solution) { nil }
+        let(:problem2_solution) { nil }
       end
     end
 
-    describe "problem 1" do
-      it "is correct" do
-        expect(subject.problem1).to eq(nil)
-      end
-    end
-
-    describe "problem 2" do
-      it "is correct" do
-        expect(subject.problem2).to eq(nil)
-      end
+    it_behaves_like "daily problem" do
+      let(:problem1_solution) { nil }
+      let(:problem2_solution) { nil }
     end
   end
 SPEC_TEMPLATE
 
-def create_file(filename, template, _year, day)
+def create_file(filename, template, year, day)
   if File.exist?(filename)
     warn "file exists: #{filename}"
     return
   end
 
-  File.write(filename, template.gsub("{XXX}", day))
+  File.write(filename, template.gsub("{YEAR}", year).gsub("{DAY}", day))
 end
 
 def ensure_dir(year, _day)
