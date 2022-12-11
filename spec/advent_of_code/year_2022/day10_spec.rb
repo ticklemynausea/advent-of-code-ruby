@@ -157,12 +157,31 @@ RSpec.describe AdventOfCode::Year2022::Day10 do
 
     it_behaves_like "daily problem" do
       let(:problem1_solution) { 13140 }
-      let(:problem2_solution) { nil }
+      let(:problem2_solution) do
+        <<~SOLUTION
+          ##..##..##..##..##..##..##..##..##..##..
+          ###...###...###...###...###...###...###.
+          ####....####....####....####....####....
+          #####.....#####.....#####.....#####.....
+          ######......######......######......####
+          #######.......#######.......#######.....
+        SOLUTION
+      end
     end
   end
 
   it_behaves_like "daily problem" do
-    let(:problem1_solution) { nil }
-    let(:problem2_solution) { nil }
+    let(:problem1_solution) { 14220 }
+:Wa
+    let(:problem2_solution) do
+      <<~SOLUTION
+        ####.###...##..###..#....####.####.#..#.
+        ...#.#..#.#..#.#..#.#....#.......#.#..#.
+        ..#..#..#.#..#.#..#.#....###....#..#..#.
+        .#...###..####.###..#....#.....#...#..#.
+        #....#.#..#..#.#.#..#....#....#....#..#.
+        ####.#..#.#..#.#..#.####.#....####..##..
+      SOLUTION
+    end
   end
 end
