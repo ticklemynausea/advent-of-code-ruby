@@ -31,6 +31,9 @@ Style/MultilineBlockChain:
 Style/CaseEquality:
   Enabled: false
 
+Style/NumericPredicate:
+  Enabled: false
+
 Naming/MethodParameterName:
   Enabled: false
 
