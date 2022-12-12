@@ -56,7 +56,7 @@ class AdventOfCode::Year2022::Day09
             "H"
           elsif y == t_y && x == t_x
             "T"
-          elsif y.zero? && x.zero?
+          elsif y == 0 && x == 0
             "s"
           else
             "."

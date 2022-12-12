@@ -30,7 +30,7 @@ class AdventOfCode::Year2022::Day11
   end
 
   def problem2
-    10000.times { round(1) }
+    10_000.times { round(1) }
 
     monkeys.values
       .sort { |a, b| a.inspections <=> b.inspections }
@@ -54,7 +54,7 @@ class AdventOfCode::Year2022::Day11
   end
 
   def monkeys
-    @monkeys ||= $stdin.each_slice(7).each_with_object({}) do |input, monkeys|
+    @monkeys ||= $stdin.each_slice(7).with_object({}) do |input, monkeys|
       id = input[0].match(/^Monkey (\d+):$/)[1].to_i
       items = input[1].match(/^  Starting items: (.+)$/)[1].split(",").map(&:to_i)
         .map { |worry| Item.new(worry) }

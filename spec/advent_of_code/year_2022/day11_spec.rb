@@ -37,13 +37,13 @@ RSpec.describe AdventOfCode::Year2022::Day11 do
     end
 
     it_behaves_like "daily problem" do
-      let(:problem1_solution) { 10605 }
-      let(:problem2_solution) { 2713310158 }
+      let(:problem1_solution) { 10_605 }
+      let(:problem2_solution) { 2_713_310_158 }
     end
   end
 
   it_behaves_like "daily problem" do
-    let(:problem1_solution) { 66124 }
-    let(:problem2_solution) { 19309892877 }
+    let(:problem1_solution) { 66_124 }
+    let(:problem2_solution) { 19_309_892_877 }
   end
 end

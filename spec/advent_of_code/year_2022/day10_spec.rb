@@ -156,7 +156,7 @@ RSpec.describe AdventOfCode::Year2022::Day10 do
     end
 
     it_behaves_like "daily problem" do
-      let(:problem1_solution) { 13140 }
+      let(:problem1_solution) { 13_140 }
       let(:problem2_solution) do
         <<~SOLUTION
           ##..##..##..##..##..##..##..##..##..##..
@@ -171,8 +171,7 @@ RSpec.describe AdventOfCode::Year2022::Day10 do
   end
 
   it_behaves_like "daily problem" do
-    let(:problem1_solution) { 14220 }
-:Wa
+    let(:problem1_solution) { 14_220 }
     let(:problem2_solution) do
       <<~SOLUTION
         ####.###...##..###..#....####.####.#..#.
