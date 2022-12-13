@@ -34,26 +34,12 @@ RSpec.describe AdventOfCode::Year2022::Day13 do
 
     it_behaves_like "daily problem" do
       let(:problem1_solution) { 13 }
-      let(:problem2_solution) { nil }
-    end
-  end
-
-  describe "example" do
-    let(:input) do
-      <<~INPUT
-      [[1,2,3,4], [], 2]
-      [[1,2,3,4], [], 1]
-      INPUT
-    end
-
-    it_behaves_like "daily problem" do
-      let(:problem1_solution) { 0 }
-      let(:problem2_solution) { nil }
+      let(:problem2_solution) { 140 }
     end
   end
 
   it_behaves_like "daily problem" do
     let(:problem1_solution) { 6086 }
-    let(:problem2_solution) { nil }
+    let(:problem2_solution) { 27930 }
   end
 end

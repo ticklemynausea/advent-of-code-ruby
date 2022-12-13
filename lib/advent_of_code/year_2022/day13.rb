@@ -10,6 +10,17 @@ class AdventOfCode::Year2022::Day13
   end
 
   def problem2
+    ordered = each_pair(with_dividers: true).flat_map(&:itself).sort do |left, right|
+      if left == right
+        0
+      elsif compare(left, right)
+        -1
+      else
+        1
+      end
+    end
+
+    (ordered.index([[2]]) + 1) * (ordered.index([[6]]) + 1)
   end
 
   def in_pairs(left, right)
@@ -48,11 +59,13 @@ class AdventOfCode::Year2022::Day13
     end
   end
 
-  def each_pair
+  def each_pair(with_dividers: false)
     Enumerator.new do |enum|
       $stdin.map(&:chomp).each_slice(3) do |left, right, _blank|
         enum << [JSON.parse(left), JSON.parse(right)]
       end
+
+      enum << [[[2]], [[6]]] if with_dividers
     end
   end
 end
