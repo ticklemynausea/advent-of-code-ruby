@@ -77,7 +77,7 @@ def generate_problem(year, day)
 end
 
 def generate_spec(year, day)
-  filename = "spec/advent_of_code/year_#{year}/day#{day}_spec.rb"
+  filename = "spec/lib/advent_of_code/year_#{year}/day#{day}_spec.rb"
   create_file(filename, SPEC_TEMPLATE, year, day)
 end
 
