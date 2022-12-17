@@ -1,4 +1,6 @@
 require "pry"
+require "byebug"
+require "pry-byebug"
 
 Dir.glob(File.join("advent_of_code", "**", "*.rb"), base: "lib").sort.each do |r|
   require_relative r
