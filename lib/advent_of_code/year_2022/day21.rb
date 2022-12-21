@@ -1,19 +1,39 @@
 class AdventOfCode::Year2022::Day21
   def problem1
-    collapse("root")
+    collapse1("root")
   end
 
   def problem2
+    _op, left, right = input["root"]
+
+    "#{collapse2(left)} = #{collapse2(right)}"
   end
 
-  def collapse(node)
+  def collapse1(node)
     value = input[node]
 
     return value if value.is_a?(Integer)
 
     op, val1, val2 = value
 
-    collapse(val1).send(op, collapse(val2))
+    collapse1(val1).send(op, collapse1(val2))
+  end
+
+  def collapse2(node)
+    value = input[node]
+
+    return "X" if node == "humn"
+    return value if value.is_a?(Integer)
+
+    op, val1, val2 = value
+
+    lhs = collapse2(val1)
+    rhs = collapse2(val2)
+
+    return lhs.send(op, rhs) if lhs.is_a?(Integer) && rhs.is_a?(Integer)
+
+    "(#{lhs} #{op} #{rhs})"
+
   end
 
   def input
