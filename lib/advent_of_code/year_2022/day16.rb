@@ -1,17 +1,13 @@
 class AdventOfCode::Year2022::Day16
-
-
   def problem1
     visited = {}
     states = []
 
-    best = initial_state = {node: "AA", time: 0, opened: [], score: 0}
+    best = initial_state = { node: "AA", time: 0, opened: Set.new, score: 0 }
     states.push(initial_state)
 
     until states.empty?
       state = states.shift
-
-      puts state.inspect
 
       key = state.slice(:node, :time, :opened)
       if visited.fetch(key, -1) >= state[:score]
@@ -20,20 +16,16 @@ class AdventOfCode::Year2022::Day16
         visited[key] = state[:score]
       end
 
-      if state[:score] > best[:score]
-        best = state
-      end
+      best = state if state[:score] > best[:score]
 
-      if state[:time] == 30
-        next
-      end
+      next if state[:time] == 30
 
       if rate[state[:node]] > 0 && !state[:opened].include?(state[:node])
         states.push(
           node: state[:node],
           time: state[:time] + 1,
-          opened: [*state[:opened], state[:node]],
-          score: state[:score] + state[:opened].map { |o| rate[o] }.reduce(0, &:+),
+          opened: Set.new([*state[:opened], state[:node]]),
+          score: state[:score] + state[:opened].map { |o| rate[o] }.reduce(0, &:+)
         )
       end
 
@@ -42,14 +34,13 @@ class AdventOfCode::Year2022::Day16
           node: v,
           time: state[:time] + 1,
           opened: state[:opened],
-          score: state[:score] + state[:opened].map { |o| rate[o] }.reduce(0, &:+),
+          score: state[:score] + state[:opened].map { |o| rate[o] }.reduce(0, &:+)
         )
       end
     end
 
     best[:score]
   end
-
 
   def problem2
   end
