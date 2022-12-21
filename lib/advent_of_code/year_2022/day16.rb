@@ -5,7 +5,7 @@ class AdventOfCode::Year2022::Day16
     visited = {}
     states = []
 
-    best = initial_state = ["AA", 0, [], 0]
+    best = initial_state = {node: "AA", time: 0, opened: [], score: 0}
     states.push(initial_state)
 
     until states.empty?
@@ -13,41 +13,41 @@ class AdventOfCode::Year2022::Day16
 
       puts state.inspect
 
-      key = [state[0], state[1], state[2]]
-      if visited.fetch(key, -1) >= state[3]
+      key = state.slice(:node, :time, :opened)
+      if visited.fetch(key, -1) >= state[:score]
         next
       else
-        visited[key] = state[3]
+        visited[key] = state[:score]
       end
 
-      if state[3] > best[3]
+      if state[:score] > best[:score]
         best = state
       end
 
-      if state[1] == 30
+      if state[:time] == 30
         next
       end
 
-      if rate[state[0]] > 0 && !state[2].include?(state[0])
-        states.push([
-          state[0],
-          state[1] + 1,
-          [*state[2], state[0]],
-          state[3] + state[2].map { |o| rate[o] }.reduce(0, &:+),
-        ])
+      if rate[state[:node]] > 0 && !state[:opened].include?(state[:node])
+        states.push(
+          node: state[:node],
+          time: state[:time] + 1,
+          opened: [*state[:opened], state[:node]],
+          score: state[:score] + state[:opened].map { |o| rate[o] }.reduce(0, &:+),
+        )
       end
 
-      tunnels[state[0]].each do |v|
-        states.push([
-          v,
-          state[1] + 1,
-          state[2],
-          state[3] + state[2].map { |o| rate[o] }.reduce(0, &:+),
-        ])
+      tunnels[state[:node]].each do |v|
+        states.push(
+          node: v,
+          time: state[:time] + 1,
+          opened: state[:opened],
+          score: state[:score] + state[:opened].map { |o| rate[o] }.reduce(0, &:+),
+        )
       end
     end
 
-    best[3]
+    best[:score]
   end
 
 
